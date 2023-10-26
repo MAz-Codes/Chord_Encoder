@@ -72,4 +72,4 @@ This script integrates the outputs of the Melody and Chord Encoders. It takes a 
 
 **Usage**:
 
-Simply run the DataSetCreator.py script after ensuring that the Melody and Chord Encoder modules are available in the same directory or are appropriately imported.
+Simply run the dataset_creator.py script after ensuring that the Melody and Chord Encoder modules are available in the same directory or are appropriately imported.
