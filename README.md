@@ -13,7 +13,7 @@ The melody encoder takes a sequence of notes and their respective durations, the
 **Usage**:
 
 ```python
-from MelodyEncoder import encode_melody
+from melody_encoder import encode_melody
 
 melody = [("C", "q"), ("G", "h"), ("E", "q")]
 encoded_melody = encode_melody(melody)
