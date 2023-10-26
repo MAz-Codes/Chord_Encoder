@@ -1,6 +1,28 @@
-# Chord Encoder for a 36 Half-Tone System
+# Chord and Melody Data Pre-Processing for Machine Learning Models
 
-This library provides functions to encode chords based on a 36 half-tone system. The chromatic scale is repeated three times to cover a range of 36 half-tones.
+This project encompasses a system to preprocess musical data, designed to facilitate the training of an improvisational algorithm. The project consists of three main components:
+
+1. **Melody Encoder**: Converts melodies into a sequence of note intervals and durations.
+2. **Chord Encoder**: Encodes chords based on a 36 half-tone system.
+3. **Dataset Creator**: A script that combines the outputs of the Melody and Chord Encoders to produce a dataset suitable for training.
+
+## Melody Encoder:
+
+The melody encoder takes a sequence of notes and their respective durations, then encodes them into a sequence of intervals from the note C and the respective note durations.
+
+**Usage**:
+
+```python
+from MelodyEncoder import encode_melody
+
+melody = [("C", "q"), ("G", "h"), ("E", "q")]
+encoded_melody = encode_melody(melody)
+print(encoded_melody)
+```
+
+## Chord Encoder for a 36 Half-Tone System
+
+The chord encoder provides functions to encode chords based on a 36 half-tone system. The chromatic scale is repeated three times to cover a range of 36 half-tones.
 
 ## Features:
 
@@ -43,3 +65,11 @@ This library provides functions to encode chords based on a 36 half-tone system.
  print(encode_chord(root, chord_type))  # Outputs the encoded representation in the 36 half-tone system
 
 ```
+
+## DataSetCreator
+
+This script integrates the outputs of the Melody and Chord Encoders. It takes a list of melodies and chords, encodes them using the respective encoders, and then combines the encoded results to generate a dataset.
+
+**Usage**:
+
+Simply run the DataSetCreator.py script after ensuring that the Melody and Chord Encoder modules are available in the same directory or are appropriately imported.
