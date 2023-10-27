@@ -34,13 +34,13 @@ def encode_note(note_with_duration):
     # Splitting note name and duration
     note_name = ''.join([char for char in note_with_duration if char.isalpha() and char.isupper()])
     duration_char = ''.join([char for char in note_with_duration if char != note_name])
-    
+
     interval = note_mapping.get(note_name, None)
     duration_value = duration_mapping.get(duration_char, None)
-    
+
     if interval is None or duration_value is None:
         raise ValueError(f"Invalid note or duration: {note_with_duration}")
-    
+
     return (interval, duration_value)
 
 

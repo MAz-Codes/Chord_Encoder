@@ -35,7 +35,7 @@ def chord_to_notes_36(root, chord_type):
     """Given a root note and a chord type, return the notes of the chord in a 36 half tone system."""
 
     root = root if root in chromatic_scale_36 else get_enharmonic(root)
-    
+
     # Define chord templates as intervals for the 24 half tone system
     chord_templates = {
         "M": [0, 4, 7],
@@ -60,39 +60,39 @@ def chord_to_notes_36(root, chord_type):
         "D7#5": [0, 4, 8, 10],
         "D7b9b13": [0, 4, 7, 10, 13, 20],
     }
-    
+
     # Calculate the notes in the chord based on the root and the chord type
     root_idx = chromatic_scale_36.index(root)
     chord_intervals = chord_templates[chord_type]
     chord_notes = [(root_idx + interval) % 36 for interval in chord_intervals]
-    
+
     return [chromatic_scale_36[idx] for idx in chord_notes]
 
 
 
 def encode_chord(root, chord_type):
     """Encode the chord in a 36 half-tone system with the root always being the first note to receive a 1.
-    
+
     Args:
         root (str): The root note of the chord.
         chord_type (str): The type of chord based on the chord index.
 
     Returns:
         list: An encoded list of length 36, where each position corresponds to a half-tone in the chromatic scale.
-              A value of '1' at a position indicates the presence of that note in the chord.
+        A value of '1' at a position indicates the presence of that note in the chord.
     """
     chord_notes = chord_to_notes_36(root, chord_type)
     encoded = [0] * 36
 
     # Convert the root to its enharmonic equivalent if it exists
     root_enharmonic = root if root in chromatic_scale_36 else get_enharmonic(root)
-    
+
     # Find the position of the root note in the chromatic scale
     root_position = chromatic_scale_36.index(root_enharmonic)
-    
+
     # Mark the root note first in the encoded list
     encoded[root_position] = 1
-    
+
     # Mark the positions of the other notes of the chord relative to the root in the encoded list
     for note in chord_notes:
         if note != root_enharmonic:
@@ -104,7 +104,7 @@ def encode_chord(root, chord_type):
     chord_notes_enharmonic = [get_enharmonic(note) for note in chord_notes]
 
     print("*Unnecessary Information*The chord notes are: " + ', '.join(chord_notes if root in chromatic_scale_36 else chord_notes_enharmonic))
-    
+
     return encoded
 
 # Testing the function with a root of F#
